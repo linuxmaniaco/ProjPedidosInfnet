@@ -1,5 +1,6 @@
 package com.example.pedidos.service;
 
+import com.example.pedidos.model.Pedido;
 import com.example.pedidos.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

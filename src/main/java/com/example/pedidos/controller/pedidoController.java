@@ -4,9 +4,11 @@ import com.example.pedidos.model.Pedido;
 import com.example.pedidos.service.ImpostoService;
 import com.example.pedidos.service.PedidoService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.Map;
 
 
 @RestController
@@ -17,10 +19,13 @@ public class pedidoController {
     private final ImpostoService impostoService;
     @PostMapping
     public ResponseEntity create(@RequestBody Pedido pedido){
-        ImpostoResponsePayload impostoResponsePayload = impostoService.getTotalImposto(pedido);
-        System.out.println("TotalImposto: " + impostoResponsePayload);
-
-        pedidoService.salvar(pedido);
-        return null;
+        BigDecimal totalImposto = impostoService.getTotalImposto(pedido).totalImposto();
+        BigDecimal valorSemImposto = pedidoService.calcularValorTotal(pedido);
+        pedido.setTotalimposto(totalImposto);
+        pedido.setValorTotalSemImposto(valorSemImposto);
+        pedido.setValorTotalComImposto(valorSemImposto.add(totalImposto));
+        System.out.println("TotalImposto: " + totalImposto);
+        Pedido saved = pedidoService.salvar(pedido);
+        return ResponseEntity.ok(Map.of("pedido", saved));
     }
 }

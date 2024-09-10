@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ItemPedido {
     private int quantidade;
-    private String produtoId;
+    private Long produtoId;
 }

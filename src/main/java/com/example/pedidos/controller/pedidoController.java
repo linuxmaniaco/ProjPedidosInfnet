@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
+
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
@@ -17,12 +17,10 @@ public class pedidoController {
     private final ImpostoService impostoService;
     @PostMapping
     public ResponseEntity create(@RequestBody Pedido pedido){
-        ImpostoResponsePayload totalImposto = impostoService.getTotalImposto(pedido);
-        System.out.println("TotalImposto: " + totalImposto);
+        ImpostoResponsePayload impostoResponsePayload = impostoService.getTotalImposto(pedido);
+        System.out.println("TotalImposto: " + impostoResponsePayload);
 
-        log.info("Creating pedido: {}", pedido);
         pedidoService.salvar(pedido);
-        log.info("Created pedido: {}", pedido);
         return null;
     }
 }

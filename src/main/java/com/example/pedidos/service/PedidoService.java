@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
-    Pedido pedido = new Pedido();
+//    Pedido pedido = new Pedido();
     public Pedido salvar(Pedido pedido){
 
         pedido.setId(new ObjectId().getTimestamp()); // Define um novo ID único

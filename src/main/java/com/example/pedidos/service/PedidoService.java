@@ -16,10 +16,7 @@ import java.util.Optional;
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
     private final ProdutoService produtoService;
-//    Pedido pedido = new Pedido();
     public Pedido salvar(Pedido pedido){
-
-        pedido.setId(new ObjectId().getTimestamp()); // Define um novo ID único
         return pedidoRepository.save(pedido);
     }
 

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ItemPedido {
-    private int quantidade;
-    private Long produtoId;
+    private long quantidade;
+    private long produtoId;
 }

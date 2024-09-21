@@ -14,7 +14,7 @@ import java.util.List;
 @Document(collation = "pedidos")
 public class Pedido {
     @Id
-    private int id;
+    private String id;
     private List<ItemPedido> items;
     private BigDecimal totalimposto;
     private BigDecimal valorTotalSemImposto;

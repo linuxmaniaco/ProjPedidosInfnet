@@ -28,7 +28,7 @@ public class pedidoController {
 //        pedido.setValorTotalComImposto(valorSemImposto.add(totalImposto));
         System.out.println("TotalImposto: " + totalImposto);
         Pedido saved = pedidoService.salvar(pedido);
-//        notaFiscalService.emitir(pedido.getId());
+        notaFiscalService.emitir(pedido.getId());
         return ResponseEntity.ok(Map.of("pedido", saved));
     }
 }
